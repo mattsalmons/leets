@@ -10,37 +10,19 @@
 // edge cases:
 //  - empty string return 0
 // approach:
-//  - handle edge case
-//  - init current, next pointers
-//  - init currentLength
-//  - init longest
-//  - while current is less than next and next is less than length of input
-//      - if s at current index is not the same as at next
-//          - increment currentLength and next
-//          - update longest to max of longest and currentlength
-//      - if s at current is same as at next
-//          - set currentLength to one
-//          - increment current and next
-//          - update longest
-//  return longest
-
-//   let longestStr = '';
-//   let currentStr = '';
-
-//   for(let i = 0; i < s.length; i++) {
-//     let letter = s[i];
-//     let index = currentStr.indexOf(letter);
-
-//     if(index > -1) {
-//       if(currentStr.length > longestStr.length) longestStr = currentStr;
-//       currentStr = currentStr.slice(index + 1) + letter;
-//     }
-//     else {
-//       currentStr += letter;
-//     }
-//   }
-//   if(currentStr.length > longestStr.length) longestStr = currentStr;
-//   return longestStr.length;
+//  init current, longest as empty strings
+//  iterate over input
+//      create alias for current letter
+//      init index, assign as location of current letter in current string
+//      if current letter is found in current
+//          if current string length is greater than longest string length
+//              reassign longest string to current string
+//          reassign current string to equal a slice of previous current string from index                 after found letter, add current letter
+//              otherwise
+//          add current letter to current string
+//      if current string length is greater than longest string length
+//          reassign longest string to current string
+//      return longest string length
 
 var lengthOfLongestSubstring = function(s) {
     let current = '';
@@ -50,20 +32,15 @@ var lengthOfLongestSubstring = function(s) {
         let letter = s[i];
         let index = current.indexOf(letter);
         
-        if (index > -1) {
-            if (current.length > longest.length) {
-                longest = current;
-            }
-            current = current.slice(index + 1) + letter;
-           
-        } else {
+        if (index === -1) {
             current += letter;
+        } else {
+            if (current.length > longest.length) longest = current;
+            current = current.slice(index + 1) + letter;
         }
     }
     
-    if (current.length > longest.length) {
-        longest = current;
-    }
+    if (current.length > longest.length) longest = current;
     
     return longest.length;
 };
