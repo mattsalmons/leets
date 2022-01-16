@@ -55,6 +55,7 @@ var lengthOfLongestSubstring = function(s) {
                 longest = current;
             }
             current = current.slice(index + 1) + letter;
+           
         } else {
             current += letter;
         }
