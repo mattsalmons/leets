@@ -4,10 +4,11 @@
  * @return {number}
  */
 var findMedianSortedArrays = function(nums1, nums2) {
-    let merged = nums1.concat(nums2);
-    let sorted = merged.sort((a, b) => a - b);
+    let merged = nums1
+        .concat(nums2)
+        .sort((a, b) => a - b);
     
-    let half = Math.floor(sorted.length / 2);
+    let half = Math.floor(merged.length / 2);
     
-    return sorted.length % 2 ? sorted[half] : (sorted[half - 1] + sorted[half]) / 2
+    return merged.length % 2 ? merged[half] : (merged[half - 1] + merged[half]) / 2
 };
