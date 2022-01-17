@@ -43,7 +43,11 @@ var addTwoNumbers = function(l1, l2) {
         
         sum = carry;
         carry = 0;
+        
+        console.log(sum)
+        console.log(list)
     }
+   
     
     return list.next;
 };
