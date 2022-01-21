@@ -16,11 +16,19 @@
 
 // approach:
 //  - sort nums
+//  - init closest at infinity
 //  - iterate using for loop as long as i is less than length - 2
-//  - init left, right
-//  - init sum at left + right + current val
+//      - init left at next, right and end of nums
+//      - while left is smaller than right
+//          - save total of all three numbers
+//          - if total is closer to target than closest
+//              - reassign closest to total
+//          - if total is less than target
+//              - increment left
+//          - otherwise
+//              - decrement right
+//  - return closest
 
-//  - return sum
 var threeSumClosest = function(nums, target) {
     let sortedNums = nums.sort((a, b) => a - b);
     let closest = Infinity;
