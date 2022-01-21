@@ -33,18 +33,12 @@ var threeSumClosest = function(nums, target) {
             const total = sortedNums[left] + sortedNums[right] + sortedNums[i];
             if (total === target) return target;
             
-            if (Math.abs(target - closest) > Math.abs(target - total)) {
-                closest = total;
-            }
+            closest = Math.abs(target - closest) < Math.abs(target - total) ? closest : total
             
-            if (total < target) {
-                left++;
-            } else { 
-                right--;
-            }
+            if (total < target) left++;
+            else right--;
         }
     }
     
     return closest;
-    
 };
