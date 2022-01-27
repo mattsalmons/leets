@@ -6,15 +6,18 @@
 var search = function(nums, target) {
     let left = 0;
     let right = nums.length - 1;
-    
+    let mid = Math.floor((left + right) / 2);
     
     while (left <= right) {
-        let pivot = left + (right - left);
-        if (nums[pivot] === target) return pivot
-        if (target < nums[pivot]) right = pivot - 1;
-        else left = pivot + 1;
+        if (target === nums[mid]) return mid;
+        if (target > nums[mid]) {
+            left = mid + 1;
+            mid = Math.floor((left + right) / 2);
+        } else {
+            right = mid - 1;
+            mid = Math.floor ((left + right) / 2);
+        }
     }
     
-    return -1
-    
+    return -1;
 };
