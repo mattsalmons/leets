@@ -28,7 +28,6 @@ var sortedSquares = function(nums) {
             right--;
         }
     }
-    
     return result;
 };
 
