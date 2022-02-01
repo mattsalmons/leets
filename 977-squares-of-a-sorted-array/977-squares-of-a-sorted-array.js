@@ -16,10 +16,11 @@ var sortedSquares = function(nums) {
     
     let left = 0;
     let right = nums.length - 1;
+    let l, r;
     
     for (let i = nums.length - 1; i >= 0; i--) {
-        let l = nums[left] ** 2;
-        let r = nums[right] ** 2;
+        l = nums[left] ** 2;
+        r = nums[right] ** 2;
         if (l >= r) {
             result[i] = l;
             left++;
