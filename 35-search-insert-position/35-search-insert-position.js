@@ -31,6 +31,9 @@
 var searchInsert = function(nums, target) {
     let [left, right] = [0, nums.length - 1];
     
+    if (target < nums[0]) return 0;
+    if (target > nums[nums.length - 1]) return nums.length
+    
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
         if (target === nums[mid]) return mid;
