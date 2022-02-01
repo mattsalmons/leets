@@ -14,9 +14,22 @@
 var sortedSquares = function(nums) {
     let result = [];
     
-    for (let num of nums) {
-        result.push(num ** 2);
+    let left = 0;
+    let right = nums.length - 1;
+    
+    for (let i = nums.length - 1; i >= 0; i--) {
+        let l = nums[left] ** 2;
+        let r = nums[right] ** 2;
+        if (l >= r) {
+            result[i] = l;
+            left++;
+        } else {
+            result[i] = r;
+            right--;
+        }
     }
     
-    return result.sort((a, b) => a - b);
+    return result;
 };
+
+// [16, 1, 0, 9, 100]
