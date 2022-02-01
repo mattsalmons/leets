@@ -5,21 +5,21 @@
  */
 
 // input:
-//  - sorted array of distinct nums
+//  - sorted array of distinct num
 //  - target value
 // output:
 //  - the index of target OR where target should be
-// constraints:
+// constraints// constraints:
 //  - must be O(log n) (binary search)
 // edge:
-//  - if target is smaller than first or larger than last
+//  - if target is smaller than first or larger than la
 
 // approach:
 //  - init left, right
 //  - iterate while left is less than right
 //      - init mid
 //      - if target is nums at mid return mid
-//      - if target less than nums at mid
+//      - if target less than nums at mi
 //          - reassign right to mid - 1
 //              - if target is greater than nums at right 
 //                  - return right
@@ -29,16 +29,14 @@
 //                  - return left
 
 var searchInsert = function(nums, target) {
-    let left = 0, right = nums.length - 1;
-    
-    if (target > nums[right]) return nums.length;
-    if (target < nums[left]) return 0;
+    let [left, right] = [0, nums.length - 1];
     
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
-        if (nums[mid] === target) return mid;
-        else if (nums[mid] > target) right = mid - 1;
+        if (target === nums[mid]) return mid;
+        if (target < nums[mid]) right = mid - 1;
         else left = mid + 1;
     }
+    
     return left;
 };
