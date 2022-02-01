@@ -16,17 +16,14 @@
 
 // approach:
 //  - init left, right
-//  - iterate while left is less than right
+//  - iterate while left is less or equal to right
 //      - init mid
 //      - if target is nums at mid return mid
 //      - if target less than nums at mi
 //          - reassign right to mid - 1
-//              - if target is greater than nums at right 
-//                  - return right
 //      - if target is greater than nums at mid
 //         - reassign left to mid - 1
-//              - if target is smaller than nums at left
-//                  - return left
+//  - return left    
 
 var searchInsert = function(nums, target) {
     let [left, right] = [0, nums.length - 1];
@@ -37,7 +34,7 @@ var searchInsert = function(nums, target) {
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
         if (target === nums[mid]) return mid;
-        if (target < nums[mid]) right = mid - 1;
+        else if (target < nums[mid]) right = mid - 1;
         else left = mid + 1;
     }
     
