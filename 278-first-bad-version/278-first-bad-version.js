@@ -17,14 +17,26 @@ var solution = function(isBadVersion) {
      * @param {integer} n Total versions
      * @return {integer} The first bad version
      */
+    
+    // init left, right
+    // iterate while left is less than or right
+    //  init mid
+    //  if mid is bad
+    //      reassign right as mid
+    //          otherwise
+    //      reassign left as mid
+    //  return left
     return function(n) {
-        let left = 1;
+        let left = 0;
         let right = n;
         
         while (left < right) {
             let mid = Math.floor((left + right) / 2);
-            if (isBadVersion(mid)) right = mid;
-            else left = mid + 1;
+            if (isBadVersion(mid)) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
         }
         
         return left;
