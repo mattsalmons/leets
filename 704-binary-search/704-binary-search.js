@@ -28,22 +28,15 @@ var search = function(nums, target) {
     let left = 0;
     let right = nums.length - 1;
     
-    function midFinder(indexOne, indexTwo) {
-        return Math.floor((indexOne + indexTwo) / 2);
-    }
-    
-    let mid = midFinder(left, right);
-    
     while (left <= right) {
-        if (nums[mid] === target) return mid;
-        if (nums[mid] > target) {
+        let mid = Math.floor((right + left) / 2);
+        if (target === nums[mid]) return mid;
+        if (target < nums[mid]) {
             right = mid - 1;
-            mid = midFinder(left, right);
         } else {
             left = mid + 1;
-            mid = midFinder(left, right);
         }
     }
     
-    return - 1;
+    return -1;
 };
