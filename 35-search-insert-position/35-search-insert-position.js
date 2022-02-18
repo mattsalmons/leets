@@ -26,19 +26,25 @@
 //  - return left    
 
 var searchInsert = function(nums, target) {
-    if (target < nums[0]) return 0;
-    if (target > nums[nums.length - 1]) return nums.length
-    
     let left = 0;
     let right = nums.length - 1;
-    let mid;
     
-    while (left <= right) {
-        mid = Math.floor((left + right) / 2);
+    if (target > nums[nums.length - 1]) return nums.length;
+    if (target < nums[0]) return 0;
+    
+    while (left < right) {
+        let mid = Math.floor((left + right) / 2);
         if (target === nums[mid]) return mid;
-        if (target < nums[mid]) right = mid - 1;
+        if (target < nums[mid]) right = mid;
         else left = mid + 1;
     }
     
     return left;
 };
+
+// 1, 3, 5, 6
+// l  m t   r
+// 1, 3, 5, 6
+//    l tm  r
+// 1, 3, 5, 6
+//    lr
