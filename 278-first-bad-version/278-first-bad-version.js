@@ -27,18 +27,18 @@ var solution = function(isBadVersion) {
     //      reassign left as mid
     //  return left
     return function(n) {
-        let left = 0;
-        let right = n;
+        let [left, right] = [0, n];
         
-        while (left < right) {
+        while (left <= right) {
             let mid = Math.floor((left + right) / 2);
-            if (isBadVersion(mid)) {
-                right = mid;
-            } else {
-                left = mid + 1;
-            }
+            if (isBadVersion(mid)) right = mid - 1;
+            else left = mid + 1;
         }
         
         return left;
     }
 };
+
+// 4, 5
+// |
+// 
